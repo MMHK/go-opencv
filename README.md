@@ -145,3 +145,21 @@ You can find more samples at: https://github.com/lazywei/go-opencv/tree/master/s
 
 - Open a pull request!
 
+## Mingw64 (on window) 编译问题
+
+- 准备/安装好mimgw64 编译环境。
+- 在mingw64环境下，重新编译 opencv(2.4.2) **由于作者在源码限定了window环境下opencv的依赖版本，所以请确认opencv的版本为 2.4.2**
+    具体请参考：
+        - [https://ccw1986.blogspot.hk/2014/06/windowmingwopencv-248-install-opencv.html](https://ccw1986.blogspot.hk/2014/06/windowmingwopencv-248-install-opencv.html)
+        - [https://sourceforge.net/p/opencvmingw/wiki/Build%20OpenCV%20under%20MinGW/](https://sourceforge.net/p/opencvmingw/wiki/Build%20OpenCV%20under%20MinGW/)
+        
+- 根据作者步骤，copy好依赖的`dll`/`lib.a`/`include`文件, 然后就可以开始编译`go`源码了
+```
+# libopencv*.dll --> ${MinGWRoot}\bin
+# libopencv*.lib --> ${MinGWRoot}\lib
+# include\opencv --> ${MinGWRoot}\include\opencv
+# include\opencv2 --> ${MinGWRoot}\include\opencv2
+
+go get github.com/lazywei/go-opencv
+cd ${GoOpenCVRoot}/trunk/samples && go run hellocv.go
+```
